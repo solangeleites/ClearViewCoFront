@@ -26,7 +26,7 @@ export const Card = styled.div`
   align-items: center;
   justify-content: center;
   width: 450px;
-  height: 350px;
+  height: 450px;
   border: 1px solid black;
   padding: 20px 0px;
 `;
@@ -34,7 +34,7 @@ export const Card = styled.div`
 export const Image = styled.img`
   width: 300px;
   height: 300px;
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 export const Name = styled.h3`
@@ -46,20 +46,22 @@ export const Price = styled.p`
 `;
 
 export const Button = styled.button`
-  background: lightgray;
+  background: gray;
   color: white;
   border: none;
   cursor: pointer;
-  height: 45px;
+  height: 40px;
   width: 40px;
   border-radius: 50%;
   transition: 0.3s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 
   &:hover {
-    background: gray;
+    background: lightgray;
+    color: black;
   }
 `;
 

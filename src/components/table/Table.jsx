@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { useSelector } from 'react-redux';
 
 const TAX_RATE = 1000;
 
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
 });
 
 function ccyFormat(num) {
-  return `${num.toFixed(2)}`;
+  return `${num.toFixed(2)} $`;
 }
 
 function priceRow(qty, unit) {
@@ -50,6 +51,9 @@ const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 export default function SpanningTable() {
   const classes = useStyles();
 
+  const {cartItems, shippingCost} = useSelector(state => state.cart)
+
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="spanning table">
@@ -60,17 +64,28 @@ export default function SpanningTable() {
             <TableCell align="right">Precio</TableCell>
           </TableRow>
         </TableHead>
+
+
+
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.desc}>
-              <TableCell style={{display:'flex', flexDirection:'row', gap:'20px', alignItems:'center'}} align='center'> 
-                <img src={row.img} alt={row.desc} className={classes.img} />
-                {row.desc}
-              </TableCell>
-              <TableCell align="right">{row.qty}</TableCell>
-              <TableCell align="right">{ccyFormat(row.price)}</TableCell>
-            </TableRow>
-          ))}
+  {cartItems.length ? (
+    cartItems.map((item) => (
+      <TableRow key={item.id}>
+        <TableCell style={{ display: 'flex', flexDirection: 'row', gap: '20px', alignItems: 'center' }} align='center'>
+          <img src={item.img} alt={item.desc} className={classes.img} />
+          {item.desc}
+        </TableCell>
+        <TableCell align="right">{item.qty}</TableCell>
+        <TableCell align="right">{ccyFormat(priceRow(item.qty, item.unit))}</TableCell>
+      </TableRow>
+    ))
+  ) : (
+    <TableRow>
+      <TableCell colSpan={3}>
+        <p>No hay productos en el carrito</p>
+      </TableCell>
+    </TableRow>
+  )}
 
           <TableRow >
             <TableCell colSpan={2}>Subtotal</TableCell>

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { ListContainer } from '../favoritos/FavoritosStyled';
 
-export const ListContainerCart = styled(ListContainer)`
+export const ListContainerCart = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -38,3 +37,14 @@ export const DescriptionResumen = styled.p`
   font-size: 12px;
   font-weight: 600;
 `;
+export const ProductsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+`;
+export const Title = styled.h1`
+  font-size: 20px;  
+  font-weight: 600;
+  `;

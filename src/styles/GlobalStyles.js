@@ -10,5 +10,6 @@ export const GlobalStyles = createGlobalStyle`
         list-style: none;
         text-transform: uppercase;
         letter-spacing: 1px;
+        user-select: none;
 }
 `;
