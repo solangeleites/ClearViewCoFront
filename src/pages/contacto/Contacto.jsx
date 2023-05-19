@@ -21,7 +21,7 @@ const Contacto = () => {
       <Container>
         <Image
           style={{ height: '600px', width: '400px' }}
-          src="../../../public/img/img-form.jpg"
+          src="https://res.cloudinary.com/dgyubvlec/image/upload/v1684501076/img-form_j90utt.jpg"
         />
 
         <ContainerForm
