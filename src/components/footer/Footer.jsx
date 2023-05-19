@@ -62,16 +62,12 @@ const Footer = () => {
         </Card>
         
 
-        <Card>
+        <Card style={{border:'none', paddingBottom:'0'}}> 
           <Title style={{ paddingBottom: '20px' }}>Redes Sociales</Title>
-          <Container style={{ flexDirection: 'row', gap:'10px'}}>
-            <BsFacebook style={{ fontSize: '30px' }} />
-
-            <BsInstagram style={{ fontSize: '30px' }} />
-
-            <BsTwitter style={{ fontSize: '30px' }} />
-
-            <BsYoutube style={{ fontSize: '30px' }} />
+          <Container style={{ flexDirection:'column', gap:'10px'}}>
+          <span style={{display:'flex', justifyContent:'center', alignItems:'center'}}> <BsFacebook style={{ fontSize: '30px', cursor:'pointer' }} />      /ClearViewCo</span>
+          <span style={{display:'flex', justifyContent:'center', alignItems:'center'}}> <BsInstagram style={{ fontSize: '30px', cursor:'pointer' }} />     /ClearViewCo</span>
+          <span style={{display:'flex', justifyContent:'center', alignItems:'center'}}> <BsYoutube style={{ fontSize: '30px', cursor:'pointer' }} />   /ClearViewCo</span>
           </Container>
         </Card>
       </Container>

@@ -26,11 +26,12 @@ export const Image = styled.img`
   height: 700px;
   width: 650px;
   object-fit: cover;
+  border-radius: 3px;
 `;
 export const Description = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
-  font-weight:400;
+  font-weight:500;
   margin-bottom: 20px;
   position: absolute;
   z-index: 1;
@@ -42,7 +43,6 @@ export const Description = styled.p`
 export const Button = styled.button`
   border: none;
   background: white;
-  border: 0.5px solid #131415;
   padding: 15px 30px;
   font-family: 'Manrope', sans-serif;
   letter-spacing: 1px;
@@ -53,6 +53,7 @@ export const Button = styled.button`
   z-index: 1;
   bottom: 50px;
   left: 50px;
+  border-radius: 3px;
 
   &::after {
     content: '';

@@ -5,7 +5,7 @@ import { Card,Image, Description, Price,  } from './RecetadosStyled';
 const Recetados = () => {
   return (
     <>
-    <div  style={{display: 'flex', flexWrap: 'wrap', justifyContent:'center', gap: '15px'}}>
+    <div  style={{display: 'flex', flexWrap: 'wrap', justifyContent:'center', gap: '20px'}}>
 
       <Card>
         <Image src="../../../public/img/lmv1.png" />

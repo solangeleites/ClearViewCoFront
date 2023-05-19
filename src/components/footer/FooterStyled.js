@@ -7,8 +7,10 @@ export const Section = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 25px 0;
+  padding: 70px 0;
+  background-color:#ffffff99;
   border-top: 1px solid #203040;
+
 `;
 
 export const Container = styled.div`
@@ -48,3 +50,12 @@ export const Title = styled.h2`
   color: #203040;
   font-weight: 600;
 `;
+
+export const ContainerIcons = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  gap: 50px;
+  `;

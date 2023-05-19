@@ -1,74 +1,59 @@
-import React from 'react'
-import { BsFillCreditCard2BackFill } from 'react-icons/bs'
-import { Container, Section, Title, Card, Price } from './GarantiasStyled'
+import React from 'react';
+import { BsFillCreditCard2BackFill } from 'react-icons/bs';
+import { FaLock, FaUser } from 'react-icons/fa';
+import {
+  Container,
+  Section,
+  Title,
+  Card,
+  Desc,
+  Circle,
+} from './GarantiasStyled';
 
 const Garantias = () => {
   return (
-    <Section style={{ backgroundColor: 'lightgrey' }}>
-    <Container>
-      <Card
-        style={{
-          height: '250px',
-          width: '300px',
-          border: '1px solid black',
-          position: 'relative',
-        }}
-      >
-        <BsFillCreditCard2BackFill
-          style={{ position: 'absolute', top: '0px', fontSize: '50px' }}
-        />
-        <Title>Pago Seguro</Title>
-        <Price>
-          Protegemos tu información personal con los más altos estándares de
-          seguridad.
-        </Price>
-      </Card>
+    <Section>
+      <Container>
+        <Card>
+        <Circle>
+            <FaLock 
+              style={{fontSize: '40px', color: 'white' }}
+            />
+          </Circle>
+          <Title>Pago Seguro</Title>
+          <Desc>
+            Protegemos tu información personal con los más altos estándares de
+            seguridad.
+          </Desc>
+        </Card>
 
-      <Card
-        style={{
-          height: '250px',
-          width: '300px',
-          border: '1px solid black',
-        }}
-      >
-        <Title>Pago Seguro</Title>
-        <Price>
-          Protegemos tu información personal con los más altos estándares de
-          seguridad.
-        </Price>
-      </Card>
+        <Card>
+        <Circle>
+            <BsFillCreditCard2BackFill
+              style={{fontSize: '40px', color: 'white' }}
+            />
+          </Circle>
+          <Title>metodo de pagos</Title>
+          <Desc>
+          Aceptamos todos los métodos de pago disponibles.
+          </Desc>
+        </Card>
 
-      <Card
-        style={{
-          height: '250px',
-          width: '300px',
-          border: '1px solid black',
-        }}
-      >
-        <Title>Pago Seguro</Title>
-        <Price>
-          Protegemos tu información personal con los más altos estándares de
-          seguridad.
-        </Price>
-      </Card>
 
-      <Card
-        style={{
-          height: '250px',
-          width: '300px',
-          border: '1px solid black',
-        }}
-      >
-        <Title>Pago Seguro</Title>
-        <Price>
-          Protegemos tu información personal con los más altos estándares de
-          seguridad.
-        </Price>
-      </Card>
-    </Container>
-  </Section>
+        <Card>
+        <Circle>
+            <FaUser
+              style={{fontSize: '40px', color: 'white' }}
+            />
+          </Circle>
+          <Title>Atención personalizada</Title>
+          <Desc>
+          Cuidado individualizado que se ajusta a tus preferencias y requerimientos específicos.          </Desc>
+        </Card>
 
-  )
-}
+      </Container>
+    </Section>
+  );
+};
 
-export default Garantias
+export default Garantias;

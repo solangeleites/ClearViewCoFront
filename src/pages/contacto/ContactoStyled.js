@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import { Formik } from 'formik';
 import { Form } from 'formik';
+import { tablet } from '../../queries/mediaQueries';
 
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 70px 0;
+  padding: 50px 0;
 `;
 export const Container = styled.div`
   display: flex;
@@ -15,10 +16,19 @@ export const Container = styled.div`
   align-items: center;
   width: 90%;
   flex-wrap: wrap;
+
+
 `;
 export const Image = styled.img`
   height: 600px;
   width: 400px;
+  object-fit:contain;
+  border-radius:3px;
+
+  ${tablet} {
+    height: 400px;
+    width: 300px;
+  }
 `;
 export const Formulario = styled(Form)`
   display: flex;

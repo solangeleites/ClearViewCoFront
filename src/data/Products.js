@@ -10,7 +10,7 @@ export const Products = [
   {
     id: 2,
     title: 'Gafas de Sol - Tropicales',
-    img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684501076/lmv1_yu2m0w.jpg',
+    img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684501073/img3_xnnuqp.webp',
     desc: 'Gafas de sol con lentes polarizadas y marco de madera',
     price: 4000,
     category: 'GafasDeSol',
@@ -49,7 +49,7 @@ export const Products = [
   },
   {
     id: 7,
-    title: 'Gafas de Vista - Modernas',
+    title: 'Gafas de Vista - Blue',
     img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684501075/img27_dd1cqo.webp',
     desc: 'Gafas de vista con marco de titanio y lentes progresivas',
     price: 3500,
@@ -66,7 +66,7 @@ export const Products = [
   {
     id: 9,
     title: 'Gafas de Vista - Clásicas',
-    img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684501073/img1_peudu3.png',
+    img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684501075/img26_uy26ak.webp',
     desc: 'Gafas de vista con montura de pasta y forma rectangular',
     price: 1500,
     category: 'GafasDeVista',
@@ -113,7 +113,7 @@ export const Products = [
   },
   {
     id: 15,
-    title: 'Gafas de Vista - Redondas',
+    title: 'Gafas de Vista - Opal',
     img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684501073/img1_dmtcdi.webp',
     desc: 'Gafas de vista con montura redonda de metal y lentes antirreflejantes',
     price: 1800,
@@ -121,7 +121,7 @@ export const Products = [
   },
   {
     id: 16,
-    title: 'Gafas de Vista - Cuadradas',
+    title: 'Gafas de Vista - Four',
     img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684501075/img28_clt0tr.webp',
     desc: 'Gafas de vista con montura cuadrada de pasta y lentes progresivas',
     price: 2500,
@@ -129,7 +129,7 @@ export const Products = [
   },
   {
     id: 17,
-    title: 'Gafas de Vista - Ojo de Gato',
+    title: 'Gafas de Vista - Orange',
     img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684501075/img28_clt0tr.webp',
     desc: 'Gafas de vista con montura en forma de ojo de gato de pasta y lentes antirreflejantes',
     price: 2200,

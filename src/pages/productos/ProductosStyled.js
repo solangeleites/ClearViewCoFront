@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { tablet } from '../../queries/mediaQueries';
 
 export const Container = styled.div`
   display: flex;
@@ -29,20 +30,39 @@ export const Card = styled.div`
   height: 450px;
   border: 1px solid black;
   padding: 20px 0px;
+  border-radius:3px;
+
+  ${tablet}{
+    width: 300px;
+    height: 300px;
+  }
 `;
 
 export const Image = styled.img`
   width: 300px;
   height: 300px;
   object-fit: contain;
+
+  ${tablet}{
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 export const Name = styled.h3`
   font-size: 18px;
+
+  ${tablet}{
+    font-size: 14px;
+  }
 `;
 
 export const Price = styled.p`
   font-size: 18px;
+
+  ${tablet}{
+    font-size: 14px;
+  }
 `;
 
 export const Button = styled.button`
@@ -63,13 +83,18 @@ export const Button = styled.button`
     background: lightgray;
     color: black;
   }
+
+  ${tablet}{
+    height: 40px;
+    width: 40px;
+  }
 `;
 
 export const ContainerDesc = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 400px;
+  justify-content: center;
+  gap: 30px;
 `;
 
 export const ContainerButtons = styled.div`

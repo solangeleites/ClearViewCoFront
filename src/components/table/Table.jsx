@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useSelector } from 'react-redux';
+import { tablet, mobile } from '../../queries/mediaQueries';
 
 const TAX_RATE = 0;
 

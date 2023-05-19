@@ -4,7 +4,7 @@ export const MenuContext = createContext();
 
 export const MenuProvider = ({ children }) => {
 
-const [isOpen, setIsOpen] = useState(true);
+const [isOpen, setIsOpen] = useState(false);
 
 const handleOpen = () => {
     setIsOpen(!isOpen);
