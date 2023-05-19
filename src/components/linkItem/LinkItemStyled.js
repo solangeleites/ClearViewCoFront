@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { mobile, tablet } from '../../queries/mediaQueries';
 
 export const LinkItemStyled = styled(NavLink)`
   color: #203040;
@@ -32,5 +33,10 @@ export const LinkItemStyled = styled(NavLink)`
   &:active::after {
     transform-origin: bottom right;
     transform: scaleX(1);
+  }
+
+  ${tablet}{
+    font-size: 18px;
+    font-weight: 600;
   }
 `;
