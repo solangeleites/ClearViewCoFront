@@ -5,6 +5,7 @@ import { Card, Image, Description, Price } from './SolStyled'
 const Sol = () => {
   return (
 <>
+<div  style={{display: 'flex', flexWrap: 'wrap', justifyContent:'center'}}>
     <Outlet />
     <Card>
       <Image src="../../../public/img/lmv2.jpeg" />
@@ -49,7 +50,7 @@ const Sol = () => {
       <Description>Radiant Shades</Description>
       <Price>$100</Price>
     </Card>
-    
+    </div>
     </>
   )
 }
