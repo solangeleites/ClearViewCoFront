@@ -1,13 +1,13 @@
 export const Categories = [
     {
         id: 1,
-        img: "../../public/img/sc1.jpg",
+        img: "https://res.cloudinary.com/dgyubvlec/image/upload/v1684501077/sc1_smf04g.jpg",
         title: "Gafas de sol",
         category: "GafasDesSol",
     },
     {
       id: 2,
-      img: "../../public/img/sc2.jpeg",
+      img: "https://res.cloudinary.com/dgyubvlec/image/upload/v1684501076/sc2_ztdphj.jpg",
       title: "Gafas de vista",
       category: "GafasDeVista",
     },
