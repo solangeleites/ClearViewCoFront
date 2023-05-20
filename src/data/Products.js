@@ -97,7 +97,7 @@ export const Products = [
   },
   {
     id: 13,
-    title: 'Gafas Sol - Eclipse II',
+    title: 'Gafas de Sol - Eclipse II',
     img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684501074/img7_ngn3yu.webp',
     desc: 'Gafas de sol con lentes polarizadas',
     price: 2200,
@@ -105,7 +105,7 @@ export const Products = [
   },
   {
     id: 14,
-    title: 'Gafas Vista - Ámbar',
+    title: 'Gafas de Vista - Ámbar',
     img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684501074/img23_dynwce.webp',
     desc: 'Gafas de vista redondas con montura de metal',
     price: 1900,

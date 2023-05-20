@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,17 +8,25 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useSelector } from 'react-redux';
-import { tablet, mobile } from '../../queries/mediaQueries';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 
 const TAX_RATE = 0;
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700,
+    overflowX: 'auto',
   },
   img: {
-    maxWidth: '100px',
-    maxHeight: '100px',
+    maxWidth: '60px',
+    maxHeight: '60px',
+  },
+  quantityCell: {
+    textAlign: 'center',
+    '@media (max-width: 600px)': {
+      textAlign: 'left',
+    },
   },
 });
 
@@ -30,22 +38,31 @@ function priceRow(qty, unit) {
   return qty * unit;
 }
 
-
 function subtotal(items) {
-  return items.reduce((acc, curr) => acc + priceRow(curr.quantity, curr.price), 0);
+  return items.reduce(
+    (acc, curr) => acc + priceRow(curr.quantity, curr.price),
+    0
+  );
 }
-
-
-
 
 export default function SpanningTable() {
   const classes = useStyles();
 
-  const {cartItems, shippingCost} = useSelector(state => state.cart)
+  const { cartItems, shippingCost } = useSelector((state) => state.cart);
 
   const invoiceSubtotal = subtotal(cartItems);
   const invoiceTaxes = TAX_RATE;
   const invoiceTotal = invoiceTaxes + invoiceSubtotal + shippingCost;
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+
+  const [purchaseCompleted, setPurchaseCompleted] = useState(false);
+
+
+  const handlePurchaseComplete = () => {
+    setPurchaseCompleted(true);
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -53,40 +70,55 @@ export default function SpanningTable() {
         <TableHead>
           <TableRow>
             <TableCell>Descripción</TableCell>
-            <TableCell align="right">Cantidad</TableCell>
+            <TableCell align="center">Cantidad</TableCell>
             <TableCell align="right">Precio</TableCell>
           </TableRow>
         </TableHead>
 
-
-
         <TableBody>
-  {cartItems.length ? (
-    cartItems.map((item) => (
-      <TableRow key={item.id}>
+          {cartItems.length ? (
+            cartItems.map((item) => (
+              <TableRow key={item.id}>
+                <TableCell
+                  style={{
+                    display: 'flex',
+                    flexDirection: isMobile ? 'column' : 'row',
+                    alignItems: 'center',
+                  }}
+                  align="left"
+                >
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className={classes.img}
+                  />
+                  {item.title}
+                </TableCell>
+                <TableCell
+                  className={classes.quantityCell}
+                  align={isMobile ? 'right' : 'center'}
+                >
+                  {item.quantity}
+                </TableCell>
+                <TableCell align="right">
+                  {ccyFormat(priceRow(item.quantity, item.price))}
+                </TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={3}>
+                <p>No hay productos en el carrito</p>
+              </TableCell>
+            </TableRow>
+          )}
 
-        <TableCell style={{ display: 'flex', flexDirection: 'row', gap: '20px', alignItems: 'center' }} align='center'>
-          <img src={item.img} alt={item.title} className={classes.img} />
-          {item.title}
-        </TableCell>
-        <TableCell align="right">{item.quantity}</TableCell>
-        <TableCell align="right">{ccyFormat(priceRow(item.quantity, item.price))}</TableCell>
-      </TableRow>
-    ))
-  ) : (
-    <TableRow>
-      <TableCell colSpan={3}>
-        <p>No hay productos en el carrito</p>
-      </TableCell>
-    </TableRow>
-  )}
-
-          <TableRow >
+          <TableRow>
             <TableCell colSpan={2}>Subtotal</TableCell>
             <TableCell align="right">$ {invoiceSubtotal}.00</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Envio</TableCell>
+            <TableCell>Envío</TableCell>
             <TableCell align="right"></TableCell>
             <TableCell align="right">{ccyFormat(shippingCost)}</TableCell>
           </TableRow>
@@ -96,6 +128,18 @@ export default function SpanningTable() {
           </TableRow>
         </TableBody>
       </Table>
+
+      {cartItems.length > 0 && (
+     <div style={{ display: 'flex', justifyContent: 'center', padding: '20px', fontSize:'22px', background:'#206B54', color: 'white'}}>
+     <button onClick={handlePurchaseComplete}>Finalizar compra</button>
+   </div>
+      )}
+
+      {purchaseCompleted && (
+     <div style={{ display: 'flex', justifyContent: 'center', padding: '20px', fontSize:'22px', background:'#206B54', color: 'white'}}>
+     <p >Su compra ha sido realizada 🥳</p>
+        </div>
+      )}
     </TableContainer>
   );
 }

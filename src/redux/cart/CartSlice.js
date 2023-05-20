@@ -17,9 +17,17 @@ const cartSlice = createSlice({
             cartItems: addItemToCart(state.cartItems, action.payload),
             shippingCost: SHIPPING_COST,
         }
-    }
+    },
+    resetCart: (state) => {
+      return {
+        ...state,
+        cartItems: [],
+        shippingCost: 0,
+      };
+    },
   },
 });
+
 
 export const { addToCart } = cartSlice.actions;
 
