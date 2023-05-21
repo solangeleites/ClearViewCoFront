@@ -1,3 +1,4 @@
+
 export const Products = [
   {
     id: 1,
@@ -129,8 +130,8 @@ export const Products = [
   },
   {
     id: 17,
-    title: 'Gafas de Vista - Orange',
-    img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684501075/img28_clt0tr.webp',
+    title: 'Gafas de Vista - Golden',
+    img: 'https://res.cloudinary.com/dgyubvlec/image/upload/v1684697605/img100_rfmsp9.webp',
     desc: 'Gafas de vista con montura en forma de ojo de gato de pasta y lentes antirreflejantes',
     price: 2200,
     category: 'GafasDeVista',
@@ -169,3 +170,5 @@ export const Products = [
     category: 'GafasDeSol',
   }
 ];
+
+
