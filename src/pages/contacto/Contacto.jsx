@@ -53,9 +53,9 @@ const Contacto = () => {
                 isError={touched.phone && errors.phone}
               ></Input>
               <TextArea
-                name="msg"
+                name="mensaje"
                 label="Mensaje"
-                isError={touched.msg && errors.msg}
+                isError={touched.mensaje && errors.mensaje}
               />
               <Button />
             </Formulario>

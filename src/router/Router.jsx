@@ -7,7 +7,10 @@ import Recetados from '../pages/recetados/Recetados';
 import Productos from '../pages/productos/Productos';
 import Contacto from '../pages/contacto/Contacto';
 import Carrito from '../pages/carrito/Carrito';
-
+import Successful from '../pages/successful/Successful';
+import Usuario from '../pages/usuario/Usuario';
+import Login from '../pages/usuario/login/Login';
+import Validate from '../pages/validate/Validate';
 
 const Router = () => {
   return (
@@ -21,6 +24,13 @@ const Router = () => {
           <Route path="/productos" element={<Productos />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/successful" element={<Successful />} />
+
+          <Route path="/usuario" element={<Usuario />} />
+          <Route path="login" element={<Login />} />
+          <Route path="validate" element={<Validate />} />
+          
+
         </Routes>
       </Layout>
     </BrowserRouter>

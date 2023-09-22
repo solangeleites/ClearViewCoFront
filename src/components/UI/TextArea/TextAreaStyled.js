@@ -11,6 +11,8 @@ export const TextAreaStyle = styled.textarea`
   outline: none;
 `;
 export const Error = styled.span`
-  padding-left: 5px;
+   padding-left: 5px;
   color: crimson;
+  font-size: 12px;
+  font-weight: 500;
 `;

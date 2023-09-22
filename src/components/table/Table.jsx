@@ -10,7 +10,9 @@ import Paper from '@material-ui/core/Paper';
 import { useSelector } from 'react-redux';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+import { AiFillDelete } from 'react-icons/ai';
+import { deleteItem } from '../../redux/cart/CartSlice';
+import {useDispatch} from 'react-redux'
 
 const TAX_RATE = 0;
 
@@ -46,6 +48,7 @@ function subtotal(items) {
 }
 
 export default function SpanningTable() {
+  const dispatch = useDispatch()
   const classes = useStyles();
 
   const { cartItems, shippingCost } = useSelector((state) => state.cart);
@@ -59,7 +62,6 @@ export default function SpanningTable() {
 
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
 
-
   const handlePurchaseComplete = () => {
     setPurchaseCompleted(true);
   };
@@ -72,6 +74,7 @@ export default function SpanningTable() {
             <TableCell>Descripción</TableCell>
             <TableCell align="center">Cantidad</TableCell>
             <TableCell align="right">Precio</TableCell>
+            <TableCell align="center">Delete</TableCell>
           </TableRow>
         </TableHead>
 
@@ -103,6 +106,20 @@ export default function SpanningTable() {
                 <TableCell align="right">
                   {ccyFormat(priceRow(item.quantity, item.price))}
                 </TableCell>
+
+                <TableCell align="center">
+                  <span
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <AiFillDelete  onClick={() => dispatch(deleteItem(item))}
+                      style={{ color: 'crimson', fontSize: '22px', cursor:'pointer' }}
+                    />
+                  </span>
+                </TableCell>
               </TableRow>
             ))
           ) : (
@@ -130,14 +147,32 @@ export default function SpanningTable() {
       </Table>
 
       {cartItems.length > 0 && (
-     <div style={{ display: 'flex', justifyContent: 'center', padding: '20px', fontSize:'22px', background:'#206B54', color: 'white'}}>
-     <button onClick={handlePurchaseComplete}>Finalizar compra</button>
-   </div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            padding: '20px',
+            fontSize: '22px',
+            background: '#206B54',
+            color: 'white',
+          }}
+        >
+          <button onClick={handlePurchaseComplete}>Finalizar compra</button>
+        </div>
       )}
 
       {purchaseCompleted && (
-     <div style={{ display: 'flex', justifyContent: 'center', padding: '20px', fontSize:'22px', background:'#206B54', color: 'white'}}>
-     <p >Su compra ha sido realizada 🥳</p>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            padding: '20px',
+            fontSize: '22px',
+            background: '#206B54',
+            color: 'white',
+          }}
+        >
+          <p>Su compra ha sido realizada 🥳</p>
         </div>
       )}
     </TableContainer>

@@ -10,3 +10,9 @@ if (productInCart) {
 }
 return [...cartItems, { ...product, quantity: 1 }];
 };
+
+export const DeleteItem = (cartItems, product) => {
+const productInCart = cartItems.filter((item) => item.id != product.id);
+return [...productInCart];
+}
+

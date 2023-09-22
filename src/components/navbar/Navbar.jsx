@@ -6,6 +6,7 @@ import { BsCart2 } from 'react-icons/bs';
 import BarsMenu from '../barsMenu/BarsMenu';
 import { useContext } from 'react';
 import { MenuContext } from '../../context/Context';
+import { AiOutlineUser} from 'react-icons/ai'
 
 
 
@@ -24,6 +25,13 @@ const Navbar = () => {
           {' '}
           <BsCart2 style={{ fontSize: '20px' }} />{' '}
         </LinkItem>
+
+        <LinkItem to="usuario">
+          {' '}
+          <AiOutlineUser style={{ fontSize: '20px' }} />{' '}
+        </LinkItem>
+
+
       </LinkContainer>
       <BarsMenu />
     </NavbarContainer>

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {tablet} from '../../queries/mediaQueries'
+
 export const NavbarContainer = styled.nav`
   height: 80px;
   width: 100%;
