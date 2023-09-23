@@ -3,7 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { verifyUser } from '../../axios/axiosUser';
-import { validateInitialValues, validateValidationSchema } from '../../formik';
+
+
+import {FormInitialValues} from '../../formik/initialValues';
+
+import {FormValidationSchema} from '../../formik/validationSchema';
+
 import { setCurrentUser, setVerified } from '../../redux/userSlice';
 import { ContainerForm, Formulario, Container } from '../contacto/ContactoStyled';
 import Input from '../../components/UI/Input/Input';
