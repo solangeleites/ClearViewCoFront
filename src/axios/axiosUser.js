@@ -24,10 +24,11 @@ export const loginUser = async (email, password) => {
       password,
     });
     return response.data;
-  } catch (error) {
-    console.log(error);
-    // return alert(error.response.data.msg);
+  }catch (error) {
+    console.log('Error al intentar iniciar sesión:', error.response);
+    // Puedes agregar más lógica según sea necesario
   }
+  
 };
 
 export const verifyUser = async (email, code) => {

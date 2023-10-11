@@ -66,7 +66,7 @@ const  Login = () => {
                 type="password"
                 isError={touched.password && errors.password}
               ></Input>
-              <Button>Enviar</Button>
+              <Button type="submit">Enviar</Button>
             </Formulario>
           )}
         </ContainerForm>

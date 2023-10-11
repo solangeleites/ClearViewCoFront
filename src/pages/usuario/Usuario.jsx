@@ -27,6 +27,7 @@ const Usuario = () => {
       <ContainerForm
         initialValues={FormInitialValues}
         validationSchema={FormValidationSchema}
+
         onSubmit={async (values, actions) => {
           try {
             const user = await createUser(
@@ -34,6 +35,7 @@ const Usuario = () => {
               values.email,
               values.password
             );
+            console.log('Usuario creado correctamente:', user);
 
             actions.resetForm();
 
@@ -70,7 +72,7 @@ const Usuario = () => {
               type="password"
               isError={touched.password && errors.password}
             ></Input>
-            <Button>Enviar</Button>
+            <Button type='submit'>Enviar</Button>
           </Formulario>
         )}
       </ContainerForm>
