@@ -38,24 +38,29 @@ const  Usuario = () => {
 
 
 
-
           onSubmit={async (values, actions) => {
-            const user = await createUser(
-              values.name,
-              values.email,
-              values.password
-            );
-            actions.resetForm();
-            if (user) {
-              dispatch(
-                setCurrentUser({
-                  ...user.usuario,
-                  token: user.token,
-                })
+            try {
+              const user = await createUser(
+                values.name,
+                values.email,
+                values.password
               );
+              
+              actions.resetForm();
+              
+              if (user) {
+                dispatch(
+                  setCurrentUser({
+                    ...user.usuario,
+                    token: user.token,
+                  })
+                );
+              }
+            } catch (error) {
+              console.error('Error al crear el usuario:');
             }
           }}
-
+          
 
 
 

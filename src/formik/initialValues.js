@@ -3,4 +3,5 @@ export const FormInitialValues = {
   email: '',
   phone: '',
   msg: '',
+  password: '',
 };

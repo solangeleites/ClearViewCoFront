@@ -10,14 +10,12 @@ import {FormValidationSchema} from '../../../formik/validationSchema';
 import  useRedirect from '../../../hooks/useRedirect';
 import {loginUser} from '../../../axios/axiosUser';
 import {setCurrentUser} from'../../../redux/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 
 const  Login = () => {
     const dispatch = useDispatch();
     useRedirect('/');
-
-    const currentUser = useSelector((state) => state.user.current);
 
   return (
     <Container>
@@ -28,18 +26,27 @@ const  Login = () => {
           validationSchema={FormValidationSchema}
           
 
-          onSubmit={async values => 
-            {
-            const user = await loginUser(values.email, values.password);
-            if (user) {
-              dispatch(
-                setCurrentUser({
-                  ...user.usuario,
-                  token: user.token,
-                })
-              );
+          onSubmit={async (values) => {
+            try {
+                const user = await loginUser(values.email, values.password);
+                if (user) {
+                    dispatch(setCurrentUser({
+                        ...user.usuario,
+                        token: user.token
+                    }));
+                    console.log('Sesión iniciada');
+                    if (user.usuario.verified) {
+                        navigate("/");
+                    } else {
+                        navigate("/validation");
+                    }
+                } else {
+                    console.error('Error al iniciar sesión. Verifica tus credenciales.');
+                }
+            } catch (error) {
+                console.error('Error al iniciar sesión. Verifica tus credenciales.');
             }
-          }}
+        }}
 
 
 
