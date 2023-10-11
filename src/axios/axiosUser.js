@@ -15,6 +15,7 @@ export const createUser = async (nombre, email, password) => {
     // return alert(error.response.data.errors[0].msg);
   }
 };
+createUser('sol', 'leites@gmail.com', '123456')
 
 export const loginUser = async (email, password) => {
   try {

@@ -9,7 +9,7 @@ import {FormValidationSchema} from '../../../formik/validationSchema';
 
 import  useRedirect from '../../../hooks/useRedirect';
 import {loginUser} from '../../../axios/axiosUser';
-import {setCurrentUser} from'../../../redux/userSlice';
+import {setCurrentUser} from'../../../redux/userSlice/UserSlice';
 import { useDispatch } from 'react-redux';
 
 

@@ -6,7 +6,7 @@ const Validation = () => {
     const navigate = useNavigate()
 
     return (
-        <div className='validation-container'>
+        <div>
 
             <>
                 <h1>!BIENVENIDO/A! Te llegará un mail con un código de verificación</h1>
