@@ -21,7 +21,7 @@ export const createIssue = async (
         },
       }
     );
-    alert('Issue creado correctamente');
+    alert('Administrador creado correctamente');
     return response.data;
   } catch (err) {
     console.log(err);
