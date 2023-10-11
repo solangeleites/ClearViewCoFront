@@ -1,9 +1,13 @@
 import React from 'react';
 import { ButtonStyle } from './ButtonStyled';
 
-const Button = ({ onSubmit }) => {
+const Button = ({ onClick, children}) => {
 
-  return <ButtonStyle type='submit'>Enviar</ButtonStyle>;
+  return <ButtonStyle 
+  type='submit'
+  onClick={onClick}
+  
+  >{children}</ButtonStyle>;
 };
 
 export default Button;

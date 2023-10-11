@@ -7,16 +7,17 @@ import {FormInitialValues} from '../../../formik/initialValues';
 import {FormValidationSchema} from '../../../formik/validationSchema';
 
 
-
 import  useRedirect from '../../../hooks/useRedirect';
 import {loginUser} from '../../../axios/axiosUser';
 import {setCurrentUser} from'../../../redux/userSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const  Login = () => {
     const dispatch = useDispatch();
     useRedirect('/');
+
+    const currentUser = useSelector((state) => state.user.current);
 
   return (
     <Container>
@@ -27,7 +28,8 @@ const  Login = () => {
           validationSchema={FormValidationSchema}
           
 
-          onSubmit={async values => {
+          onSubmit={async values => 
+            {
             const user = await loginUser(values.email, values.password);
             if (user) {
               dispatch(
@@ -57,7 +59,7 @@ const  Login = () => {
                 type="password"
                 isError={touched.password && errors.password}
               ></Input>
-              <Button />
+              <Button>Enviar</Button>
             </Formulario>
           )}
         </ContainerForm>

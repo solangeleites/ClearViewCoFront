@@ -10,13 +10,14 @@ import { createUser } from '../../axios/axiosUser';
 import { useDispatch } from 'react-redux';
 import {setCurrentUser} from '../../redux/userSlice';
 import useRedirect from '../../hooks/useRedirect';
+import { Link } from 'react-router-dom';
 
 
 
 const  Usuario = () => {
     const dispatch = useDispatch();
-    useRedirect('/');
-    const { state } = useLocation();
+    useRedirect('/vali');
+    // const { state } = useLocation();
 
 
 
@@ -24,7 +25,11 @@ const  Usuario = () => {
   return (
     <Container>
         <Title>Registrate</Title>
-        <P to='login'> ó inica sesión</P>
+        <P> 
+        <Link to="/login">¿ó YA tienes una cuenta?</Link>
+        
+        
+        </P>
 
         <ContainerForm
           initialValues={FormInitialValues}
@@ -75,7 +80,7 @@ const  Usuario = () => {
                 type="password"
                 isError={touched.password && errors.password}
               ></Input>
-              <Button />
+              <Button>Enviar</Button>
             </Formulario>
           )}
         </ContainerForm>

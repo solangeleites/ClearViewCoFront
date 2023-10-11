@@ -57,7 +57,7 @@ const Contacto = () => {
                 label="Mensaje"
                 isError={touched.mensaje && errors.mensaje}
               />
-              <Button />
+              <Button>Enviar</Button>
             </Formulario>
           )}
         </ContainerForm>

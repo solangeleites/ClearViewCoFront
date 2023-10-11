@@ -8,36 +8,39 @@ import { useContext } from 'react';
 import { MenuContext } from '../../context/Context';
 import { AiOutlineUser } from 'react-icons/ai';
 
-import { ADMIN } from '../utils/constantes';
 import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentUser } from '../../redux/userSlice'
 
 const Navbar = () => {
   const currentUser = useSelector((state) => state.user);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const ctx = useContext(MenuContext);
 
-  console.log({ currentUser });
-
-  const handleLogOut = () => {
-    dispatch(SetCurrentUser(null));
+  const handleLoginClick = () => {
+    if (currentUser) {
+      // Si el usuario ya ha iniciado sesión, cierra el menú
+      dispatch(toggleHiddenMenu());
+    } else {
+      // Si el usuario no ha iniciado sesión, navega a la página de inicio de sesión
+      navigate('/login');
+    }
   };
+
   return (
     <NavbarContainer>
       <Logo onClick={() => navigate('/')}>Clear View Co.</Logo>
       <LinkContainer isOpen={ctx.isMenuOpen}>
         <LinkItem to="productos"> PRODUCTOS</LinkItem>
         <LinkItem to="contacto"> CONTACTO</LinkItem>
-
         <LinkItem to="carrito">
           {' '}
           <BsCart2 style={{ fontSize: '20px' }} />{' '}
         </LinkItem>
-        <LinkItem to="usuario">
+        <LinkItem to="usuario" onClick={handleLoginClick}>
           {' '}
           <AiOutlineUser style={{ fontSize: '20px' }} />{' '}
+          {currentUser ? currentUser.nombre : 'Iniciar Sesión'}
         </LinkItem>
       </LinkContainer>
       <BarsMenu />
@@ -46,3 +49,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
