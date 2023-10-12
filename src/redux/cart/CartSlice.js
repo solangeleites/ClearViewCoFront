@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { DeleteItem, addItemToCart } from './cartUtils';
-import { SHIPPING_COST } from '../../components/utils/constantes';
+import { SHIPPING_COST } from '../../utils/constants';
 
 const INITIAL_STATE = {
   cartItems: [],

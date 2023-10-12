@@ -8,6 +8,7 @@ export const createUser = async (nombre, email, password) => {
       email,
       password,
     });
+    
     const user = await loginUser(email, password);
     return user;
   } catch (error) {
