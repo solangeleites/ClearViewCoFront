@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { BASE_URL } from '../utils/constants';
 
 export const createUser = async (nombre, email, password) => {
   try {
-    await axios.post(`${BASE_URL}/auth/register`, {
+    await axios.post(`${import.meta.env.BASE_URL}/auth/register`, {
       nombre,
       email,
       password,
@@ -20,7 +19,7 @@ createUser('sol', 'leites@gmail.com', '123456')
 
 export const loginUser = async (email, password) => {
   try {
-    const response = await axios.post(`${BASE_URL}/auth/login`, {
+    const response = await axios.post(`${import.meta.env.BASE_URL}/auth/login`, {
       email,
       password,
     });
@@ -34,7 +33,7 @@ export const loginUser = async (email, password) => {
 
 export const verifyUser = async (email, code) => {
   try {
-    const response = await axios.patch(`${BASE_URL}/auth/verify`, {
+    const response = await axios.patch(`${import.meta.env.BASE_URL}/auth/verify`, {
       email,
       code,
     });
