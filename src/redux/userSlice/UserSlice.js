@@ -9,9 +9,7 @@ const userSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     setCurrentUser: (state, action) => {
-      return {
-        currentUser: action.payload,
-      };
+      state.currentUser = action.payload;
     },
     setVerified: (state) => {
       if (state.currentUser) {
@@ -21,5 +19,5 @@ const userSlice = createSlice({
   },
 });
 
-export const {setCurrentUser, setVerified} = userSlice.actions;
+export const { setCurrentUser, setVerified } = userSlice.actions;
 export default userSlice.reducer;

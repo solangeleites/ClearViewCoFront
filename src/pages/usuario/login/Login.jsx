@@ -12,6 +12,9 @@ import {loginUser} from '../../../axios/axiosUser';
 import {setCurrentUser} from'../../../redux/userSlice/UserSlice';
 import { useDispatch } from 'react-redux';
 
+const handleSUbmit= () =>{
+  console.log('enviando formulario')
+}
 
 const  Login = () => {
     const dispatch = useDispatch();
@@ -26,27 +29,17 @@ const  Login = () => {
           validationSchema={FormValidationSchema}
           
 
-          onSubmit={async (values) => {
-            try {
-                const user = await loginUser(values.email, values.password);
-                if (user) {
-                    dispatch(setCurrentUser({
-                        ...user.usuario,
-                        token: user.token
-                    }));
-                    console.log('Sesión iniciada');
-                    if (user.usuario.verified) {
-                        navigate("/");
-                    } else {
-                        navigate("/validation");
-                    }
-                } else {
-                    console.error('Error al iniciar sesión. Verifica tus credenciales.');
-                }
-            } catch (error) {
-                console.error('Error al iniciar sesión. Verifica tus credenciales.');
+          onSubmit={async values => {
+            const user = await loginUser(values.email, values.password);
+            if (user) {
+              dispatch(
+                setCurrentUser({
+                  ...user.usuario,
+                  token: user.token,
+                })
+              );
             }
-        }}
+          }}
 
 
 
@@ -66,7 +59,7 @@ const  Login = () => {
                 type="password"
                 isError={touched.password && errors.password}
               ></Input>
-              <Button type="submit">Enviar</Button>
+              <Button onSubmit={handleSUbmit}  >Enviarrrrrrrrr</Button>
             </Formulario>
           )}
         </ContainerForm>

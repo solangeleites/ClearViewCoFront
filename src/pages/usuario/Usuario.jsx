@@ -12,10 +12,10 @@ import { setCurrentUser } from '../../redux/userSlice/UserSlice';
 import useRedirect from '../../hooks/useRedirect';
 import { Link } from 'react-router-dom';
 
+
 const Usuario = () => {
   const dispatch = useDispatch();
   useRedirect('/validate');
-  // const { state } = useLocation();
 
   return (
     <Container>
@@ -27,30 +27,23 @@ const Usuario = () => {
       <ContainerForm
         initialValues={FormInitialValues}
         validationSchema={FormValidationSchema}
-
         onSubmit={async (values, actions) => {
-          try {
-            const user = await createUser(
-              values.name,
-              values.email,
-              values.password
+          const user = await createUser(
+            values.name,
+            values.email,
+            values.password
+          );
+          actions.resetForm();
+          if (user) {
+            dispatch(
+              setCurrentUser({
+                ...user.usuario,
+                token: user.token,
+              })
             );
-            console.log('Usuario creado correctamente:', user);
-
-            actions.resetForm();
-
-            if (user) {
-              dispatch(
-                setCurrentUser({
-                  ...user.usuario,
-                  token: user.token,
-                })
-              );
-            }
-          } catch (error) {
-            console.error('Error al crear el usuario:', error);
           }
         }}
+
       >
         {({ touched, errors }) => (
           <Formulario>
@@ -58,12 +51,15 @@ const Usuario = () => {
               name="name"
               label="Nombre"
               type="text"
+              autoComplete="name"
               isError={touched.name && errors.name}
             ></Input>
             <Input
               name="email"
               label="Correo Electronico"
               type="email"
+              autoComplete="email"
+
               isError={touched.email && errors.email}
             ></Input>
             <Input
@@ -72,7 +68,9 @@ const Usuario = () => {
               type="password"
               isError={touched.password && errors.password}
             ></Input>
-            <Button type='submit'>Enviar</Button>
+
+
+            <Button>Enviar</Button>
           </Formulario>
         )}
       </ContainerForm>
