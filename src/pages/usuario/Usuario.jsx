@@ -13,6 +13,26 @@ import useRedirect from '../../hooks/useRedirect';
 import { Link } from 'react-router-dom';
 
 
+
+// const handleSubmit = async (e) =>{
+
+//   e.preventDefault( 
+//     console.log('evento canecelado')  
+//   )
+
+//   try {
+//     const formData = new FormData(event.target);
+//     const name = formData.get('name');
+//     const email = formData.get('email');
+//     const password = formData.get('password');
+
+    
+//   } catch (error) {
+    
+//   }
+// }
+
+
 const Usuario = () => {
   const dispatch = useDispatch();
   useRedirect('/validate');
@@ -27,53 +47,55 @@ const Usuario = () => {
       <ContainerForm
         initialValues={FormInitialValues}
         validationSchema={FormValidationSchema}
+
+
         onSubmit={async (values, actions) => {
-          const user = await createUser(
-            values.name,
-            values.email,
-            values.password
-          );
-          actions.resetForm();
-          if (user) {
-            dispatch(
-              setCurrentUser({
-                ...user.usuario,
-                token: user.token,
-              })
-            );
+          console.log()
+          try {
+              const user = await createUser(values.username, values.email, values.password);
+              actions.resetForm();
+              if (user) {
+                  dispatch(setCurrentUser({
+                      ...user.usuario,
+                  }));
+                  console.log('Usuario registrado con éxito:', user);
+              }
+          } catch (error) {
+            console.log('Error al registrar usuario:', error);
           }
-        }}
+      }}
+
 
       >
-        {({ touched, errors }) => (
+        
           <Formulario>
             <Input
               name="name"
               label="Nombre"
               type="text"
               autoComplete="name"
-              isError={touched.name && errors.name}
+              // isError={touched.name && errors.name}
             ></Input>
             <Input
               name="email"
               label="Correo Electronico"
               type="email"
               autoComplete="email"
-
-              isError={touched.email && errors.email}
+              // isError={touched.email && errors.email}
             ></Input>
             <Input
               name="password"
               label="Contraseña"
               type="password"
-              isError={touched.password && errors.password}
+              // isError={touched.password && errors.password}
             ></Input>
 
 
-            <Button>Enviar</Button>
+            <Button type="submit">Enviar</Button>
           </Formulario>
-        )}
+        
       </ContainerForm>
+        
     </Container>
   );
 };
