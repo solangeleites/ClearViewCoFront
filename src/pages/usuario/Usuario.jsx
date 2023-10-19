@@ -13,6 +13,7 @@ import useRedirect from '../../hooks/useRedirect';
 import { Link } from 'react-router-dom';
 
 
+
 const Usuario = () => {
   const dispatch = useDispatch();
   useRedirect('/validate');
@@ -71,7 +72,7 @@ const Usuario = () => {
             ></Input>
 
 
-            <Button type="submit">Enviar</Button>
+<Button>Enviar</Button>
           </Formulario>
         )}
       </ContainerForm>

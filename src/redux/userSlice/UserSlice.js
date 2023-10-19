@@ -9,8 +9,12 @@ const userSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     setCurrentUser: (state, action) => {
-      state.currentUser = action.payload;
-    },
+      return{
+      
+      ...state,
+      currentUser: action.payload,
+    }
+  },
     setVerified: (state) => {
       if (state.currentUser) {
         state.currentUser.verified = true;

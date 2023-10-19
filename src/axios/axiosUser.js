@@ -8,12 +8,13 @@ export const createUser = async (nombre, email, password) => {
       email,
       password,
     });
-    
+
     const user = await loginUser(email, password);
+    console.log('Usuario registrado con éxito:', user);
     return user;
   } catch (error) {
-    console.log(error);
-     return alert(error.response.data.errors[0].msg);
+    console.error('Error al registrar user:',error.response);
+    // return alert(error.response.data.errors[0].msg);
   }
 };
 
@@ -25,7 +26,7 @@ export const loginUser = async (email, password) => {
     });
     return response.data;
   }catch (error) {
-    console.log('Error al intentar iniciar sesión:', error.response.data.msg);
+    console.error('Error al intentar iniciar sesión:', error.response.data.msg);
   }
   
 };
