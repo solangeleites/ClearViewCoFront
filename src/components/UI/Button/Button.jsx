@@ -1,10 +1,11 @@
 import React from 'react';
 import { ButtonStyle } from './ButtonStyled';
 
-const Button = ({children, onClick = e => e.preventDefault() }) => {
+const Button = ({children}) => {
   return (
-    <ButtonStyle type="submit" onClick={onClick}>
+    <ButtonStyle type="submit">
       {children}
+      
     </ButtonStyle>
   );
 };
