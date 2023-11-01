@@ -5,7 +5,6 @@ import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import { FormInitialValues } from '../../formik/initialValues';
 import { FormValidationSchema } from '../../formik/validationSchema';
-
 import { createUser } from '../../axios/axiosUser';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser } from '../../redux/userSlice/UserSlice';
