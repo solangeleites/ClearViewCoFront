@@ -28,9 +28,9 @@ export const Card = styled.div`
   justify-content: center;
   width: 450px;
   height: 450px;
-  border: 1px solid black;
+  border: 1px solid lightgray;
   padding: 20px 0px;
-  border-radius:3px;
+  border-radius:10px;
 
   ${tablet}{
     width: 300px;
@@ -66,8 +66,7 @@ export const Price = styled.p`
 `;
 
 export const Button = styled.button`
-  background: gray;
-  color: white;
+  background: #94a94fd4 ;
   border: none;
   cursor: pointer;
   height: 40px;
@@ -80,8 +79,8 @@ export const Button = styled.button`
   margin-top: 20px;
 
   &:hover {
-    background: lightgray;
-    color: black;
+    background:  #10583a;
+    color: white;
   }
 
   ${tablet}{

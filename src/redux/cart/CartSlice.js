@@ -22,7 +22,7 @@ const cartSlice = createSlice({
       return {
         ...state,
         cartItems: DeleteItem(state.cartItems, action.payload),
-        shippingCost: 0,
+         shippingCost: 0,
       };
     },
   },

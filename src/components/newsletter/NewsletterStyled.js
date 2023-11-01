@@ -7,7 +7,7 @@ export const Section = styled.section`
   justify-content: center;
   align-items: center;
   padding: 70px 0;
-  background-color: #0d6c44;
+  background-color:  #10583a;
   text-align: center;
 
 `;
@@ -23,7 +23,7 @@ export const Input = styled.input`
   width: 300px;
   font-family: Manrope;
   letter-spacing: 1px;
-  border-radius: 3px;
+  border-radius: 10px;
   text-align: center;
 `;
 export const Button = styled.button`
@@ -33,15 +33,11 @@ export const Button = styled.button`
   text-align: center;
   font-family: Manrope;
   letter-spacing: 1px;
-  border-radius: 3px;
-  background-color: black;
+  border-radius: 10px;
+  background-color: #94a94df4;
   color: white;
   cursor: pointer;
   text-transform: uppercase;
-  transition: all 0.5s ease-in-out;
 
-  &:hover {
-    background-color: #000000cb;
-    color: white;
-  }
+
 `;

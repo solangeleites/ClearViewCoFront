@@ -13,6 +13,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { AiFillDelete } from 'react-icons/ai';
 import { deleteItem } from '../../redux/cart/CartSlice';
 import {useDispatch} from 'react-redux'
+import useRedirect from '../../hooks/useRedirect';
 
 const TAX_RATE = 0;
 
@@ -33,6 +34,9 @@ const useStyles = makeStyles({
 });
 
 function ccyFormat(num) {
+  if (typeof num !== 'number') {
+    return '';
+  }
   return `$ ${num.toFixed(2)} `;
 }
 
@@ -55,12 +59,14 @@ export default function SpanningTable() {
 
   const invoiceSubtotal = subtotal(cartItems);
   const invoiceTaxes = TAX_RATE;
-  const invoiceTotal = invoiceTaxes + invoiceSubtotal + shippingCost;
+  const invoiceTotal = invoiceSubtotal + shippingCost;
+  console.log(shippingCost)
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
+  useRedirect(purchaseCompleted ? '/successful' : null);
 
   const handlePurchaseComplete = () => {
     setPurchaseCompleted(true);
@@ -153,7 +159,7 @@ export default function SpanningTable() {
             justifyContent: 'center',
             padding: '20px',
             fontSize: '22px',
-            background: '#206B54',
+            background: '#26725bd4',
             color: 'white',
           }}
         >

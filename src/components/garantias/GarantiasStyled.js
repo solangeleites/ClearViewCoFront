@@ -7,7 +7,8 @@ export const Section = styled.section`
   justify-content: center;
   align-items: center;
   padding: 70px 0;
-  background-color: #809a2b`;
+  background-color: #94a94fd4;`
+  ;
 
 export const Container = styled.div`
   display: flex;
@@ -29,8 +30,8 @@ export const Card = styled.div`
   align-items: center;
   height: 200px;
   width: 300px;
-  border:1px solid black;
-  border-radius: 3px;
+  border:1px solid #10583a;
+  border-radius: 10px;
   position: relative;
 `;
 
@@ -49,7 +50,7 @@ export const Circle = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: black;
+  background-color:  #10583a;
   display: flex;
   justify-content: center;
   align-items: center;
