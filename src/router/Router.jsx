@@ -29,8 +29,6 @@ const Router = () => {
           <Route path="/usuario" element={<Usuario />} />
           <Route path="login" element={<Login />} />
           <Route path="validate" element={<Validate />} />
-          
-
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -10,11 +10,46 @@ import { useDispatch } from 'react-redux';
 import { setCurrentUser } from '../../redux/userSlice/UserSlice';
 import useRedirect from '../../hooks/useRedirect';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 
 
 const Usuario = () => {
   const dispatch = useDispatch();
+  
+  const [fields, setfields] = useState({});
+
+
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    console.log(fields)
+    try {
+      const user = await createUser(fields.name, fields.email, fields.pass);
+      console.log(user)
+      actions.resetForm();
+      if (user) {
+        dispatch(setCurrentUser({
+          ...user.usuario,
+        }));
+        console.log('Usuario registrado con éxito:', user);
+      }
+    } catch (error) {
+      console.log('Error al registrar usuario:', error);
+    }
+  }
+
+  const onChange = async (e) => {
+    setfields({
+      ...fields,
+      [e.target.name]: e.target.value
+    })
+    console.log(e.target.value)
+  }
+
+
+
+
   useRedirect('/validate');
 
   return (
@@ -27,26 +62,8 @@ const Usuario = () => {
       <ContainerForm
         initialValues={FormInitialValues}
         validationSchema={FormValidationSchema}
-
-
-        onSubmit={async (values, actions) => {
-          try {
-              const user = await createUser(values.username, values.email, values.password);
-              actions.resetForm();
-              if (user) {
-                  dispatch(setCurrentUser({
-                      ...user.usuario,
-                  }));
-                  console.log('Usuario registrado con éxito:', user);
-              }
-          } catch (error) {
-            console.log('Error al registrar usuario:', error);
-          }
-      }}
-
-
       >
-        {({ touched, errors }) => (
+        {/* {({ touched, errors }) => (
           <Formulario>
             <Input
               name="name"
@@ -71,9 +88,24 @@ const Usuario = () => {
             ></Input>
 
 
-<Button>Enviar</Button>
+            <Button>Enviar</Button>
           </Formulario>
-        )}
+        )} */}
+
+
+        <form style={{display:'flex', flexDirection:'column'}} onSubmit={onSubmit}>
+          <label htmlFor="name">Nombre</label>
+          <input type="text" name="name" id="name" onChange={onChange} />
+
+          <label htmlFor="email">email</label>
+          <input type="text" name="email" id="email"onChange={onChange} />
+
+          <label htmlFor="pass">password</label>
+          <input type="password" name="pass" id="pass" onChange={onChange}/>
+
+          <button type='submit'>Enviar</button>
+        </form>
+
       </ContainerForm>
         
     </Container>

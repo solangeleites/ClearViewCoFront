@@ -5,6 +5,8 @@ import Button from '../../components/UI/Button/Button';
 import { Formik, Form } from 'formik';
 import Input from '../../components/UI/Input/Input';
 import * as Yup from 'yup';
+import { verifyUser } from '../../axios/axiosUser';
+
 
 const validationSchema = Yup.object({
   code: Yup.string().required('Este campo es requerido'),
