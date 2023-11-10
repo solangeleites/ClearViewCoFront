@@ -12,11 +12,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from '../../redux/userSlice/UserSlice';
 
 import { FaCheckCircle, FaUserAlt } from 'react-icons/fa';
+
+
+
+
+
+
+
+import { Link } from 'react-router-dom';
+import Logout from '../../pages/logout/Logout';
+
+
+
+
+
 const Navbar = () => {
   const currentUser = useSelector((state) => state.user);
   const navigate = useNavigate();
   const ctx = useContext(MenuContext);
   const dispatch = useDispatch();
+
+
 
   const handleLoginClick = () => {
     if (currentUser) {
@@ -39,26 +55,20 @@ const Navbar = () => {
         </LinkItem>
 
         <div className="user-nav">
+          <Link to= { currentUser.currentUser ? "/logout" : "/usuario"}>
           <div
             onClick={() => {
-              currentUser
-                ? navigate("/usuario")
-                : navigate("/login");
+              currentUser.currentUser ? navigate('/usuario') : navigate('/login');
             }}
           >
-            <span>
-              <AiOutlineUser />
-              {currentUser
-                ? <>
-                    {currentUser.isVerified ? <h1>logueado</h1> : null}
-                    {currentUser.nombre}
-                  </>  /* Cierre de corchete para el bloque true */
-                : "Iniciar Sesión"
-              }
+            <span style={{fontSize:'12px', fontWeight:'600'}}>
+              {currentUser.currentUser && currentUser.currentUser.verified ? currentUser.currentUser.nombre : <AiOutlineUser />}
             </span>
-            {currentUser ? null : <h1> no LOGUEADO</h1>}
-          </div>
+          </div> 
+          </Link>
         </div>
+       { currentUser.currentUser ?  <Logout /> : "" }
+
       </LinkContainer>
       <BarsMenu />
     </NavbarContainer>
@@ -66,5 +76,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-

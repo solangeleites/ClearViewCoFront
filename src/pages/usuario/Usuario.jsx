@@ -1,57 +1,64 @@
 import React from 'react';
 import { Container, Title, P } from './UsuarioStyled';
 import { ContainerForm, Formulario } from '../contacto/ContactoStyled';
-import Input from '../../components/UI/Input/Input';
-import Button from '../../components/UI/Button/Button';
 import { FormInitialValues } from '../../formik/initialValues';
 import { FormValidationSchema } from '../../formik/validationSchema';
 import { createUser } from '../../axios/axiosUser';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser } from '../../redux/userSlice/UserSlice';
-import useRedirect from '../../hooks/useRedirect';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-
-
+import useRedirect from '../../hooks/useRedirect';
+import { redirect, useNavigate } from 'react-router-dom';
 
 const Usuario = () => {
   const dispatch = useDispatch();
-  
+  const navigate = useNavigate();
+
   const [fields, setfields] = useState({});
 
+  // const[userRegistered, setUserRegistered] = useState(false)
+  // useRedirect(userRegistered ? '/validate' : null)
 
+  // const handleUserRegistered = () => {
+  //   setUserRegistered(true)
+  // }
+
+  // const [purchaseCompleted, setPurchaseCompleted] = useState(false);
+  // useRedirect(purchaseCompleted ? '/successful' : null);
+
+  // const handlePurchaseComplete = () => {
+  //   setPurchaseCompleted(true);
+  // };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(fields)
+    console.log(fields);
     try {
       const user = await createUser(fields.name, fields.email, fields.pass);
-      console.log(user)
-      actions.resetForm();
+      console.log(user);
       if (user) {
-        dispatch(setCurrentUser({
-          ...user.usuario,
-        }));
+        dispatch(
+          setCurrentUser({
+            ...user.usuario,
+          })
+        );
+         navigate('/validate');
+
         console.log('Usuario registrado con éxito:', user);
       }
     } catch (error) {
       console.log('Error al registrar usuario:', error);
     }
-  }
+  };
 
   const onChange = async (e) => {
     setfields({
       ...fields,
-      [e.target.name]: e.target.value
-    })
-    console.log(e.target.value)
-  }
-
-
-
-
-  useRedirect('/validate');
-
+      [e.target.name]: e.target.value,
+    });
+    console.log(e.target.value);
+  };
   return (
     <Container>
       <Title>Registrate</Title>
@@ -63,7 +70,30 @@ const Usuario = () => {
         initialValues={FormInitialValues}
         validationSchema={FormValidationSchema}
       >
-        {/* {({ touched, errors }) => (
+        <form
+          style={{ display: 'flex', flexDirection: 'column' }}
+          onSubmit={onSubmit}
+        >
+          <label htmlFor="name">Nombre</label>
+          <input type="text" name="name" id="name" onChange={onChange} />
+
+          <label htmlFor="email">email</label>
+          <input type="text" name="email" id="email" onChange={onChange} />
+
+          <label htmlFor="pass">password</label>
+          <input type="password" name="pass" id="pass" onChange={onChange} />
+
+          <button type="submit">Enviar</button>
+        </form>
+      </ContainerForm>
+    </Container>
+  );
+};
+
+export default Usuario;
+
+{
+  /* {({ touched, errors }) => (
           <Formulario>
             <Input
               name="name"
@@ -90,26 +120,5 @@ const Usuario = () => {
 
             <Button>Enviar</Button>
           </Formulario>
-        )} */}
-
-
-        <form style={{display:'flex', flexDirection:'column'}} onSubmit={onSubmit}>
-          <label htmlFor="name">Nombre</label>
-          <input type="text" name="name" id="name" onChange={onChange} />
-
-          <label htmlFor="email">email</label>
-          <input type="text" name="email" id="email"onChange={onChange} />
-
-          <label htmlFor="pass">password</label>
-          <input type="password" name="pass" id="pass" onChange={onChange}/>
-
-          <button type='submit'>Enviar</button>
-        </form>
-
-      </ContainerForm>
-        
-    </Container>
-  );
-};
-
-export default Usuario;
+        )} */
+}

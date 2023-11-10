@@ -10,7 +10,6 @@ const userSlice = createSlice({
   reducers: {
     setCurrentUser: (state, action) => {
       return{
-      
       ...state,
       currentUser: action.payload,
     }
@@ -20,8 +19,13 @@ const userSlice = createSlice({
         state.currentUser.verified = true;
       }
     },
+
+    deleteUser: (state) => {
+      state.currentUser = null;
+    },
+
   },
 });
 
-export const { setCurrentUser, setVerified } = userSlice.actions;
+export const { setCurrentUser, setVerified, deleteUser } = userSlice.actions;
 export default userSlice.reducer;

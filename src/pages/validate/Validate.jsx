@@ -6,6 +6,7 @@ import { Formik, Form } from 'formik';
 import Input from '../../components/UI/Input/Input';
 import * as Yup from 'yup';
 import { verifyUser } from '../../axios/axiosUser';
+import { setVerified } from '../../redux/userSlice/UserSlice';
 
 
 const validationSchema = Yup.object({

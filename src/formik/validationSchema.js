@@ -11,3 +11,9 @@ export const FormValidationSchema = Yup.object({
     .max(255, 'Máximo de 255 caracteres').required('Campo requerido'),
     password: Yup.string().min(6, 'Mínimo 6 caracteres').required('Campo requerido'),
 });
+
+export const FormValidationSchemaLogin = Yup.object({
+  email: Yup.string().email('Correo inválido').required('Campo requerido'),
+  password: Yup.string().min(8, 'Mínimo 8 caracteres').required('Campo requerido')
+});
+

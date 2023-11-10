@@ -3,18 +3,21 @@ import { BASE_URL } from '../utils/constants';
 
 export const createUser = async (nombre, email, password) => {
   try {
+    console.log('Antes de Registrar usuario')
+
     await axios.post(`${BASE_URL}/auth/register`, {
       nombre,
       email,
       password,
     });
+    console.log('dentro de la funcion')
 
     const user = await loginUser(email, password);
     console.log('Usuario registrado con éxito:', user);
     return user;
   } catch (error) {
-    console.error('Error al registrar user:',error.response);
-    // return alert(error.response.data.errors[0].msg);
+    console.error('Error al registrar user:',error.response.data.errors[0].msg);
+    //  return alert(error.response.data.errors[0].msg);
   }
 };
 
