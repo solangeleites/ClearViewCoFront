@@ -12,6 +12,8 @@ import { setCurrentUser } from '../../../redux/userSlice/UserSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import {MdOutlineLogout} from 'react-icons/md'
+
 
 
 const Login = () => {
@@ -39,12 +41,14 @@ const Login = () => {
         }}
       >
         {({ touched, errors }) => (
-          <Form>
+          <Form  style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
             <Field
               name="email"
               label="Correo Electronico"
               type="email"
               iserror={touched.email && errors.email}
+              placeholder="Correo Electronico"
+              style={{paddingLeft:'50px', paddingRight:'10px', paddingTop:'5px', paddingBottom:'5px', borderRadius:'5px', border:'1px solid #ccc', marginTop:'10px', marginBottom:'10px'}}
             />
 
             {touched.email && errors.email && <div>{errors.email}</div>}
@@ -52,12 +56,17 @@ const Login = () => {
               name="password"
               label="Contraseña"
               type="password"
+              placeholder="Contraseña"
               iserror={touched.password && errors.password}
+
+              style={{paddingLeft:'50px',  paddingRight:'10px', paddingTop:'5px', paddingBottom:'5px', borderRadius:'5px', border:'1px solid #ccc'}}
             />
             {touched.password && errors.password && (
               <div>{errors.password}</div>
             )}
-            <button type="submit">Enviar</button>
+            <button type="submit"
+            style={{paddingLeft:'50px', paddingRight:'50px', paddingTop:'5px', paddingBottom:'5px', borderRadius:'5px', background:' #94a94fd4', marginTop:'10px', marginBottom:'10px', color: 'white'}}
+            >Enviar</button>
           </Form>
         )}
       </Formik>

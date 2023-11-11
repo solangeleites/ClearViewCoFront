@@ -62,7 +62,7 @@ const Navbar = () => {
             }}
           >
             <span style={{fontSize:'12px', fontWeight:'600'}}>
-              {currentUser.currentUser && currentUser.currentUser.verified ? currentUser.currentUser.nombre : <AiOutlineUser />}
+              {currentUser.currentUser && currentUser.currentUser.verified ? currentUser.currentUser.nombre : <AiOutlineUser style={{ fontSize: '20px' }} />}
             </span>
           </div> 
           </Link>

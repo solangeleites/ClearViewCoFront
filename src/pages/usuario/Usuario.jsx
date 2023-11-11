@@ -75,15 +75,16 @@ const Usuario = () => {
           onSubmit={onSubmit}
         >
           <label htmlFor="name">Nombre</label>
-          <input type="text" name="name" id="name" onChange={onChange} />
+          <input type="text" name="name" id="name" onChange={onChange}  style={{paddingLeft:'50px',  paddingRight:'10px', paddingTop:'5px', paddingBottom:'5px', borderRadius:'5px', border:'1px solid #ccc'}}
+ />
 
           <label htmlFor="email">email</label>
-          <input type="text" name="email" id="email" onChange={onChange} />
+          <input type="text" name="email" id="email" onChange={onChange} style={{paddingLeft:'50px', paddingRight:'10px', paddingTop:'5px', paddingBottom:'5px', borderRadius:'5px', border:'1px solid #ccc'}} />
 
           <label htmlFor="pass">password</label>
-          <input type="password" name="pass" id="pass" onChange={onChange} />
+          <input type="password" name="pass" id="pass" onChange={onChange} style={{paddingLeft:'50px',  paddingRight:'10px', paddingTop:'5px', paddingBottom:'5px', borderRadius:'5px', border:'1px solid #ccc'}}/>
 
-          <button type="submit">Enviar</button>
+          <button type="submit" style={{paddingLeft:'50px', paddingRight:'10px', paddingTop:'5px', paddingBottom:'5px', borderRadius:'5px', background:' #94a94fd4', marginTop:'10px', marginBottom:'10px', color: 'white'}}>Enviar</button>
         </form>
       </ContainerForm>
     </Container>

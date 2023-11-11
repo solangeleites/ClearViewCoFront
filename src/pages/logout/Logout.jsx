@@ -2,6 +2,7 @@ import React from 'react'
 import { deleteUser } from '../../redux/userSlice/UserSlice'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import {MdOutlineLogout} from 'react-icons/md'
 
 const Logout = () => {
 
@@ -15,7 +16,7 @@ const Logout = () => {
 
   return (
     <div onClick={handleLogout}>
-        <p>Logout</p>
+        <p><MdOutlineLogout style={{ fontSize: '20px' }}/> </p>
     </div>
   )
 }
